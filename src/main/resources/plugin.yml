@@ -1,0 +1,10 @@
+name: ${project.artifactId}
+version: ${project.version}
+main: ${project.groupId}.AmethystUtil
+author: Dummyc0m
+prefix: AU
+
+commands:
+   compass:
+      description: This is a demo command.
+      usage: /<command> [player]
