@@ -16,7 +16,8 @@ import java.util.List;
 public class ItemListener implements Listener {
 
     private AUItemHandler handler = AUItemHandler.getInstance();
-    @EventHandler(priority = EventPriority.HIGH)
+
+    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){
         ItemStack itemStack = event.getItem();
         if(itemStack == null || !itemStack.hasItemMeta()){
@@ -30,7 +31,7 @@ public class ItemListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event){
         ItemStack itemStack = event.getPlayer().getItemInHand();
         if(itemStack == null || !itemStack.hasItemMeta()){
@@ -64,7 +65,7 @@ public class ItemListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onPlayerSelectItem(PlayerItemHeldEvent event){
         ItemStack itemStack = event.getPlayer().getItemInHand();
         if(itemStack == null || !itemStack.hasItemMeta()){
@@ -78,7 +79,7 @@ public class ItemListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onPlayerConsume(PlayerItemConsumeEvent event){
         List<String> lore = event.getItem().getItemMeta().getLore();
         if(lore == null) return;
@@ -88,7 +89,7 @@ public class ItemListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onPlayerBreakItem(PlayerItemBreakEvent event){
         List<String> lore = event.getBrokenItem().getItemMeta().getLore();
         if(lore == null) return;

@@ -1,4 +1,4 @@
-package com.dummyc0m.amethystutil.util;
+package com.dummyc0m.amethystutil.framework.region;
 
 import org.bukkit.Location;
 

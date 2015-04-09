@@ -1,17 +1,11 @@
 package com.dummyc0m.amethystutil.framework.inventory;
 
-import com.dummyc0m.amethystutil.framework.item.AUItem;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
 
 /**
  * com.dummyc0m.amethystutil.framework.item
@@ -19,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class InventoryListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onInventoryOpen(InventoryOpenEvent event){
         InventoryHolder holder = event.getInventory().getHolder();
         if(holder != null && holder instanceof AUMenuHolder){
@@ -27,7 +21,7 @@ public class InventoryListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onInventoryClose(InventoryCloseEvent event){
         InventoryHolder holder = event.getInventory().getHolder();
         if(holder != null && holder instanceof AUMenuHolder){
@@ -35,7 +29,7 @@ public class InventoryListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onInventoryClick(InventoryClickEvent event){
         InventoryHolder holder = event.getInventory().getHolder();
         if(holder != null && holder instanceof AUMenuHolder){
