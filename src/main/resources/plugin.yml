@@ -1,8 +1,8 @@
 name: ${project.artifactId}
 version: ${project.version}
-main: ${project.groupId}.AmethystUtil
+main: ${project.groupId}.AmethystCore
 author: Dummyc0m
-prefix: AU
+prefix: AC
 
 commands:
    compass:
