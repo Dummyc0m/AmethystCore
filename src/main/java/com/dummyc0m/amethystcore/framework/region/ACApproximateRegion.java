@@ -60,9 +60,8 @@ public class ACApproximateRegion {
         if (maxZ != region3i.maxZ) return false;
         if (minX != region3i.minX) return false;
         if (minY != region3i.minY) return false;
-        if (minZ != region3i.minZ) return false;
+        return minZ == region3i.minZ;
 
-        return true;
     }
 
     @Override

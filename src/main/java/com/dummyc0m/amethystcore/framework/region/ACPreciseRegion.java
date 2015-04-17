@@ -60,9 +60,8 @@ public class ACPreciseRegion {
         if (Double.compare(region3d.maxZ, maxZ) != 0) return false;
         if (Double.compare(region3d.minX, minX) != 0) return false;
         if (Double.compare(region3d.minY, minY) != 0) return false;
-        if (Double.compare(region3d.minZ, minZ) != 0) return false;
+        return Double.compare(region3d.minZ, minZ) == 0;
 
-        return true;
     }
 
     @Override

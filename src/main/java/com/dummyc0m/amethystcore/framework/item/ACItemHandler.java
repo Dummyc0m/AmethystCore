@@ -11,16 +11,14 @@ import java.util.List;
  */
 public class ACItemHandler {
     private static ACItemHandler instance = new ACItemHandler();
-    private HashMap<String, ACItem> identifierMap = new HashMap<String, ACItem>();
+    private HashMap<String, ACItem> identifierMap = new HashMap<>();
 
     public static ACItemHandler getInstance() {
         return instance;
     }
 
     public void registerItems(List<ACItem> acItem) {
-        for (ACItem item : acItem) {
-            this.registerItem(item);
-        }
+        acItem.forEach(this::registerItem);
     }
 
     public void registerItem(ACItem acItem) {

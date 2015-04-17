@@ -20,21 +20,24 @@ public class ACPlayerData {
     private int amethyst;
     private int fluorite;
 
-    private int resonance;
-    private int frost;
-    private int flare;
-    private int gemRain;
+    private int gunLevel;
 
-    private boolean longBow;
-    private boolean speedEffect;
-    private boolean speedEffectEnabled;
-    private boolean jumpEffect;
-    private boolean jumpEffectEnabled;
-    private boolean privateMsg;
-    private boolean flight;
-    private boolean jetPack;
+    private int ammo;
+    private int flame;
+    private int firework;
+    private int gemBullet;
+    private int enderPearl;
+    private int railgun;
+    private int explosive;
+    private int textFlare;
 
-    public ACPlayerData(String playerName, UUID playerUUID, ACModule module, int experience, int expLvl, int amethyst, int fluorite, int resonance, int frost, int flare, int gemRain, boolean longBow, boolean speedEffect, boolean speedEffectEnabled, boolean jumpEffect, boolean jumpEffectEnabled, boolean privateMsg, boolean flight, boolean jetPack) {
+    private String flareContent;
+
+    private int jetpackLevel;
+    private int validUntil;
+    private boolean autoReload;
+
+    public ACPlayerData(String playerName, UUID playerUUID, ACModule module, int experience, int expLvl, int amethyst, int fluorite, int gunLevel, int ammo, int flame, int firework, int gemBullet, int enderPearl, int railgun, int explosive, int textFlare, String flareContent, int jetpackLevel, int validUntil, boolean autoReload) {
         this.playerName = playerName;
         this.playerUUID = playerUUID;
         this.module = module;
@@ -42,18 +45,19 @@ public class ACPlayerData {
         this.expLvl = expLvl;
         this.amethyst = amethyst;
         this.fluorite = fluorite;
-        this.resonance = resonance;
-        this.frost = frost;
-        this.flare = flare;
-        this.gemRain = gemRain;
-        this.longBow = longBow;
-        this.speedEffect = speedEffect;
-        this.speedEffectEnabled = speedEffectEnabled;
-        this.jumpEffect = jumpEffect;
-        this.jumpEffectEnabled = jumpEffectEnabled;
-        this.privateMsg = privateMsg;
-        this.flight = flight;
-        this.jetPack = jetPack;
+        this.gunLevel = gunLevel;
+        this.ammo = ammo;
+        this.flame = flame;
+        this.firework = firework;
+        this.gemBullet = gemBullet;
+        this.enderPearl = enderPearl;
+        this.railgun = railgun;
+        this.explosive = explosive;
+        this.textFlare = textFlare;
+        this.flareContent = flareContent;
+        this.jetpackLevel = jetpackLevel;
+        this.validUntil = validUntil;
+        this.autoReload = autoReload;
     }
 
     public String getPlayerName() {
@@ -112,100 +116,108 @@ public class ACPlayerData {
         this.fluorite = fluorite;
     }
 
-    public int getResonance() {
-        return resonance;
+    public int getGunLevel() {
+        return gunLevel;
     }
 
-    public void setResonance(int resonance) {
-        this.resonance = resonance;
+    public void setGunLevel(int gunLevel) {
+        this.gunLevel = gunLevel;
     }
 
-    public int getFrost() {
-        return frost;
+    public int getAmmo() {
+        return ammo;
     }
 
-    public void setFrost(int frost) {
-        this.frost = frost;
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
     }
 
-    public int getFlare() {
-        return flare;
+    public int getFlame() {
+        return flame;
     }
 
-    public void setFlare(int flare) {
-        this.flare = flare;
+    public void setFlame(int flame) {
+        this.flame = flame;
     }
 
-    public int getGemRain() {
-        return gemRain;
+    public int getFirework() {
+        return firework;
     }
 
-    public void setGemRain(int gemRain) {
-        this.gemRain = gemRain;
+    public void setFirework(int firework) {
+        this.firework = firework;
     }
 
-    public boolean isLongBow() {
-        return longBow;
+    public int getGemBullet() {
+        return gemBullet;
     }
 
-    public void setLongBow(boolean longBow) {
-        this.longBow = longBow;
+    public void setGemBullet(int gemBullet) {
+        this.gemBullet = gemBullet;
     }
 
-    public boolean isSpeedEffect() {
-        return speedEffect;
+    public int getEnderPearl() {
+        return enderPearl;
     }
 
-    public void setSpeedEffect(boolean speedEffect) {
-        this.speedEffect = speedEffect;
+    public void setEnderPearl(int enderPearl) {
+        this.enderPearl = enderPearl;
     }
 
-    public boolean isSpeedEffectEnabled() {
-        return speedEffectEnabled;
+    public int getRailgun() {
+        return railgun;
     }
 
-    public void setSpeedEffectEnabled(boolean speedEffectEnabled) {
-        this.speedEffectEnabled = speedEffectEnabled;
+    public void setRailgun(int railgun) {
+        this.railgun = railgun;
     }
 
-    public boolean isJumpEffect() {
-        return jumpEffect;
+    public int getExplosive() {
+        return explosive;
     }
 
-    public void setJumpEffect(boolean jumpEffect) {
-        this.jumpEffect = jumpEffect;
+    public void setExplosive(int explosive) {
+        this.explosive = explosive;
     }
 
-    public boolean isJumpEffectEnabled() {
-        return jumpEffectEnabled;
+    public int getTextFlare() {
+        return textFlare;
     }
 
-    public void setJumpEffectEnabled(boolean jumpEffectEnabled) {
-        this.jumpEffectEnabled = jumpEffectEnabled;
+    public void setTextFlare(int textFlare) {
+        this.textFlare = textFlare;
     }
 
-    public boolean isPrivateMsg() {
-        return privateMsg;
+    public String getFlareContent() {
+        return flareContent;
     }
 
-    public void setPrivateMsg(boolean privateMsg) {
-        this.privateMsg = privateMsg;
+    public void setFlareContent(String flareContent) {
+        this.flareContent = flareContent;
     }
 
-    public boolean isFlight() {
-        return flight;
+    public int getJetpackLevel() {
+        return jetpackLevel;
     }
 
-    public void setFlight(boolean flight) {
-        this.flight = flight;
+    public void setJetpackLevel(int jetpackLevel) {
+        this.jetpackLevel = jetpackLevel;
     }
 
-    public boolean isJetPack() {
-        return jetPack;
+    public int getValidUntil() {
+        return validUntil;
     }
 
-    public void setJetPack(boolean jetPack) {
-        this.jetPack = jetPack;
+    public void setValidUntil(int validUntil) {
+        this.validUntil = validUntil;
+    }
+
+    public boolean isAutoReload() {
+        return autoReload;
+    }
+
+    public void setAutoReload(boolean autoReload) {
+        this.autoReload = autoReload;
     }
 
     @Override
@@ -221,21 +233,22 @@ public class ACPlayerData {
                 .append(expLvl, that.expLvl)
                 .append(amethyst, that.amethyst)
                 .append(fluorite, that.fluorite)
-                .append(resonance, that.resonance)
-                .append(frost, that.frost)
-                .append(flare, that.flare)
-                .append(gemRain, that.gemRain)
-                .append(longBow, that.longBow)
-                .append(speedEffect, that.speedEffect)
-                .append(speedEffectEnabled, that.speedEffectEnabled)
-                .append(jumpEffect, that.jumpEffect)
-                .append(jumpEffectEnabled, that.jumpEffectEnabled)
-                .append(privateMsg, that.privateMsg)
-                .append(flight, that.flight)
-                .append(jetPack, that.jetPack)
+                .append(gunLevel, that.gunLevel)
+                .append(ammo, that.ammo)
+                .append(flame, that.flame)
+                .append(firework, that.firework)
+                .append(gemBullet, that.gemBullet)
+                .append(enderPearl, that.enderPearl)
+                .append(railgun, that.railgun)
+                .append(explosive, that.explosive)
+                .append(textFlare, that.textFlare)
+                .append(jetpackLevel, that.jetpackLevel)
+                .append(validUntil, that.validUntil)
+                .append(autoReload, that.autoReload)
                 .append(playerName, that.playerName)
                 .append(playerUUID, that.playerUUID)
                 .append(module, that.module)
+                .append(flareContent, that.flareContent)
                 .isEquals();
     }
 
@@ -249,18 +262,19 @@ public class ACPlayerData {
                 .append(expLvl)
                 .append(amethyst)
                 .append(fluorite)
-                .append(resonance)
-                .append(frost)
-                .append(flare)
-                .append(gemRain)
-                .append(longBow)
-                .append(speedEffect)
-                .append(speedEffectEnabled)
-                .append(jumpEffect)
-                .append(jumpEffectEnabled)
-                .append(privateMsg)
-                .append(flight)
-                .append(jetPack)
+                .append(gunLevel)
+                .append(ammo)
+                .append(flame)
+                .append(firework)
+                .append(gemBullet)
+                .append(enderPearl)
+                .append(railgun)
+                .append(explosive)
+                .append(textFlare)
+                .append(flareContent)
+                .append(jetpackLevel)
+                .append(validUntil)
+                .append(autoReload)
                 .toHashCode();
     }
 }

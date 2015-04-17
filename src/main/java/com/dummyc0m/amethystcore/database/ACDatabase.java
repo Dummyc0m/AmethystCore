@@ -1,5 +1,7 @@
 package com.dummyc0m.amethystcore.database;
 
+import com.dummyc0m.amethystcore.AmethystCore;
+
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,9 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ACDatabase {
     private ACDBConnectionManager manager;
     private Map<UUID, ACPlayerData> dataMap = new ConcurrentHashMap<>();
+    private ACDataProcessor processor;
 
-    public ACDatabase(ACDBConnectionManager manager) {
+    public ACDatabase(ACDBConnectionManager manager, String tableName) {
         this.manager = manager;
+        this.processor = new ACDataProcessor(manager, this, tableName);
+        AmethystCore.getInstance().getServer().getScheduler().runTaskTimer(AmethystCore.getInstance(), processor, 0, 5);
     }
 
     public void addData(UUID uuid, ACPlayerData data) {
@@ -25,4 +30,6 @@ public class ACDatabase {
     public void discardData(UUID uuid) {
         this.dataMap.remove(uuid);
     }
+
+
 }

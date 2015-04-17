@@ -111,7 +111,7 @@ public class ACItemData {
             }
             List<String> lores = this.itemMeta.getLore();
             if(lores == null){
-                lores = new ArrayList<String>();
+                lores = new ArrayList<>();
             }
             ItemMeta meta = this.itemMeta.clone();
             lores.add(ACFormat.RESET + ACFormat.BLUE + ACFormat.ITALIC + this.module);
@@ -128,7 +128,7 @@ public class ACItemData {
             this.itemMeta = this.itemInstance.getItemMeta();
             List<String> lores = this.itemMeta.getLore();
             if(lores == null){
-                lores = new ArrayList<String>();
+                lores = new ArrayList<>();
             }
             ItemMeta meta = this.itemMeta.clone();
             lores.add(ACFormat.RESET + ACFormat.BLUE + ACFormat.ITALIC + this.module);
@@ -146,23 +146,7 @@ public class ACItemData {
         }
         List<String> lores = this.itemMeta.getLore();
         if(lores == null){
-            lores = new ArrayList<String>();
-        }
-        ItemMeta meta = this.itemMeta.clone();
-        lores.add(ACFormat.RESET + ACFormat.BLUE + ACFormat.ITALIC + this.module);
-        lores.add(ACFormat.RESET + ACFormat.DARK_GRAY + this.identifier);
-        meta.setLore(lores);
-        this.itemInstance.setItemMeta(meta);
-    }
-
-    public void setItemMeta(ItemMeta itemMeta) {
-        this.itemMeta = itemMeta;
-        if (this.itemInstance == null) {
-            this.itemInstance = new ItemStack(this.material, this.amount, this.damage);
-        }
-        List<String> lores = this.itemMeta.getLore();
-        if (lores == null) {
-            lores = new ArrayList<String>();
+            lores = new ArrayList<>();
         }
         ItemMeta meta = this.itemMeta.clone();
         lores.add(ACFormat.RESET + ACFormat.BLUE + ACFormat.ITALIC + this.module);

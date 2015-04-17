@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Dummyc0m on 4/1/15.
  */
 public class ACModule {
-    private List<Player> playerList = new ArrayList<Player>();
+    private List<Player> playerList = new ArrayList<>();
     private List<String> permissions;
 
     private PlayerInventory defaultInventory;

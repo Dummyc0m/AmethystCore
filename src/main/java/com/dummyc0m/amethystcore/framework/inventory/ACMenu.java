@@ -20,7 +20,7 @@ public class ACMenu {
     private String title;
     private ACButton[] contents;
 
-    private List<ACMenuHolder> viewers = new ArrayList<ACMenuHolder>();
+    private List<ACMenuHolder> viewers = new ArrayList<>();
 
     public ACMenu(int size, String title, ACButton[] contents) {
         this.size = size;
@@ -49,7 +49,7 @@ public class ACMenu {
      * @param who The player.
      */
     public void onClose(Inventory inventory, HumanEntity who){
-        this.viewers.remove(inventory.getHolder());
+        this.viewers.remove((ACMenuHolder) inventory.getHolder());
     }
 
     /**

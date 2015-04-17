@@ -94,10 +94,8 @@ public class ACConfig {
         if (fWriter != null ? !fWriter.equals(that.fWriter) : that.fWriter != null) return false;
         if (gson != null ? !gson.equals(that.gson) : that.gson != null) return false;
         if (settings != null ? !settings.equals(that.settings) : that.settings != null) return false;
-        if (settingsClass != null ? !settingsClass.equals(that.settingsClass) : that.settingsClass != null)
-            return false;
+        return !(settingsClass != null ? !settingsClass.equals(that.settingsClass) : that.settingsClass != null);
 
-        return true;
     }
 
     @Override

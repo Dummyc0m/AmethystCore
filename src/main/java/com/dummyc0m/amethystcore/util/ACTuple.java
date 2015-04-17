@@ -20,9 +20,8 @@ public class ACTuple<X, Y> {
         ACTuple tuple = (ACTuple) o;
 
         if (x != null ? !x.equals(tuple.x) : tuple.x != null) return false;
-        if (y != null ? !y.equals(tuple.y) : tuple.y != null) return false;
+        return !(y != null ? !y.equals(tuple.y) : tuple.y != null);
 
-        return true;
     }
 
     @Override
