@@ -1,6 +1,5 @@
 package com.dummyc0m.amethystcore.database;
 
-import com.dummyc0m.amethystcore.framework.module.ACModule;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
@@ -10,10 +9,9 @@ import java.util.UUID;
  * Created by Dummyc0m on 4/12/15.
  */
 public class ACPlayerData {
-    private String playerName;
     private UUID playerUUID;
 
-    private ACModule module;
+    private String module;
     private int experience;
     private int expLvl;
 
@@ -34,11 +32,10 @@ public class ACPlayerData {
     private String flareContent;
 
     private int jetpackLevel;
-    private int validUntil;
+    private long validUntil;
     private boolean autoReload;
 
-    public ACPlayerData(String playerName, UUID playerUUID, ACModule module, int experience, int expLvl, int amethyst, int fluorite, int gunLevel, int ammo, int flame, int firework, int gemBullet, int enderPearl, int railgun, int explosive, int textFlare, String flareContent, int jetpackLevel, int validUntil, boolean autoReload) {
-        this.playerName = playerName;
+    public ACPlayerData(UUID playerUUID, String module, int experience, int expLvl, int amethyst, int fluorite, int gunLevel, int ammo, int flame, int firework, int gemBullet, int enderPearl, int railgun, int explosive, int textFlare, String flareContent, int jetpackLevel, long validUntil, boolean autoReload) {
         this.playerUUID = playerUUID;
         this.module = module;
         this.experience = experience;
@@ -60,14 +57,6 @@ public class ACPlayerData {
         this.autoReload = autoReload;
     }
 
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
     public UUID getPlayerUUID() {
         return playerUUID;
     }
@@ -76,11 +65,11 @@ public class ACPlayerData {
         this.playerUUID = playerUUID;
     }
 
-    public ACModule getModule() {
+    public String getModule() {
         return module;
     }
 
-    public void setModule(ACModule module) {
+    public void setModule(String module) {
         this.module = module;
     }
 
@@ -204,7 +193,7 @@ public class ACPlayerData {
         this.jetpackLevel = jetpackLevel;
     }
 
-    public int getValidUntil() {
+    public long getValidUntil() {
         return validUntil;
     }
 
@@ -245,7 +234,6 @@ public class ACPlayerData {
                 .append(jetpackLevel, that.jetpackLevel)
                 .append(validUntil, that.validUntil)
                 .append(autoReload, that.autoReload)
-                .append(playerName, that.playerName)
                 .append(playerUUID, that.playerUUID)
                 .append(module, that.module)
                 .append(flareContent, that.flareContent)
@@ -255,7 +243,6 @@ public class ACPlayerData {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(playerName)
                 .append(playerUUID)
                 .append(module)
                 .append(experience)

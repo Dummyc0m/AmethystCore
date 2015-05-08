@@ -17,8 +17,8 @@ public class ACItemHandler {
         return instance;
     }
 
-    public void registerItems(List<ACItem> acItem) {
-        acItem.forEach(this::registerItem);
+    public void registerItems(List<ACItem> acItems) {
+        acItems.forEach(this::registerItem);
     }
 
     public void registerItem(ACItem acItem) {

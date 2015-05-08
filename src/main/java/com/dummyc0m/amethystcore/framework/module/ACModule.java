@@ -1,5 +1,6 @@
 package com.dummyc0m.amethystcore.framework.module;
 
+import com.dummyc0m.amethystcore.database.ACPlayerData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -53,7 +54,7 @@ public class ACModule {
         this.identifier = identifier;
     }
 
-    public void onLogin(Player player){
+    public void onLogin(Player player, ACPlayerData data) {
 
     }
 
