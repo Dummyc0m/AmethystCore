@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Created by Dummyc0m on 3/12/15.
  */
-public class ACDBConnectionManager {
+public class ACDatabase {
     private boolean isConnected;
     private Connection connection;
 
@@ -18,7 +18,7 @@ public class ACDBConnectionManager {
     private String username;
     private String password;
 
-    public ACDBConnectionManager(String type, String hostname, int port, String database, String username, String password) {
+    public ACDatabase(String type, String hostname, int port, String database, String username, String password) {
         this.type = type;
         this.hostname = hostname;
         this.port = port;
