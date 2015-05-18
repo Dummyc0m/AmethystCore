@@ -5,6 +5,16 @@ author: Dummyc0m
 prefix: AC
 
 commands:
-   compass:
-      description: This is a demo command.
-      usage: /<command> [player]
+  amethystcore:
+    description: This is a demo amethyst command.
+    usage: /<command> [player]
+    permission: amethystcore.item_core
+
+permissions:
+  amethystcore.*:
+    description: Permission for all AmethystCore commands
+    children:
+      amethystcore.item_core: true
+  amethystcore.item_core:
+    description: demo command
+    default: op

@@ -7,7 +7,7 @@ import com.dummyc0m.amethystcore.framework.item.ItemListener;
 import com.dummyc0m.amethystcore.framework.module.ModuleListener;
 import com.dummyc0m.amethystcore.framework.permission.PermissionListener;
 import com.dummyc0m.amethystcore.framework.region.RegionListener;
-import com.dummyc0m.amethystcore.test.Compass;
+import com.dummyc0m.amethystcore.test.ItemCore;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,39 +22,42 @@ import java.util.logging.Logger;
  * Created by Dummyc0m on 3/13/15.
  */
 public class AmethystCore extends JavaPlugin {
-    private static AmethystCore AMETHYSTUTIL;
-    private Logger LOGGER = this.getLogger();
+    private static AmethystCore AMETHYSTCORE;
+    private Logger logger = this.getLogger();
+    private ItemCore itemCore;
+    private String version = "SNAPSHOT 0.1 For 1.8.4";
 
     public static AmethystCore getInstance() {
-        return AMETHYSTUTIL;
+        return AMETHYSTCORE;
     }
 
     @Override
     public void onEnable() {
-        AMETHYSTUTIL = this;
-        LOGGER.info("Registering Listeners");
+        AMETHYSTCORE = this;
+        logger.info("Registering Listeners");
         this.getServer().getPluginManager().registerEvents(new ItemListener(), this);
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this);
         this.getServer().getPluginManager().registerEvents(new ModuleListener(), this);
         this.getServer().getPluginManager().registerEvents(new PermissionListener(), this);
         this.getServer().getPluginManager().registerEvents(new RegionListener(), this);
-        LOGGER.info("Enabled");
+        logger.info("Registering Demo Item");
+        this.itemCore = new ItemCore(new ACItemData(Material.COMPASS), "AmethystCore", "amethystcore:item_core");
+        ACItemHandler.getInstance().registerItem(itemCore);
+        logger.info("Enabled");
     }
 
     @Override
     public void onDisable() {
-        LOGGER.info("Removing Listeners");
+        logger.info("Removing Listeners");
         HandlerList.unregisterAll(this);
-        LOGGER.info("Disabled");
+        logger.info("Disabled");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if ("compass".equalsIgnoreCase(command.getName())) {
-            if (sender instanceof Player) {
-                Compass compass = new Compass(new ACItemData(Material.COMPASS), "AmethystUtilities", "amethyst:navigator");
-                ACItemHandler.getInstance().registerItem(compass);
-                ((Player) sender).setItemInHand(compass.getItemStack());
+        if ("amethystcore".equalsIgnoreCase(command.getName())) {
+            if (sender instanceof Player && sender.hasPermission("amethystcore.item_core")) {
+                ((Player) sender).getInventory().addItem(this.itemCore.getItemStack());
                 return true;
             }
         }

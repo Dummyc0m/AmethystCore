@@ -16,4 +16,11 @@ public abstract class ACSaver implements Runnable {
         this.preparedStatement = preparedStatement;
     }
 
+    @Override
+    public void run() {
+        this.save(this.storage, this.preparedStatement);
+    }
+
+    public abstract void save(ACDataStorage storage, PreparedStatement preparedStatement);
+
 }

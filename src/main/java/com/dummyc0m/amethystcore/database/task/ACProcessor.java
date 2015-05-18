@@ -14,6 +14,17 @@ public abstract class ACProcessor implements Runnable {
     private Queue<ACData> processQueue;
 
     public ACProcessor(ACDataStorage storage, Queue<ACData> processQueue, JavaPlugin plugin) {
-        
+        this.storage = storage;
+        this.processQueue = processQueue;
     }
+
+    @Override
+    public void run() {
+        if (this.processQueue.isEmpty()) {
+            return;
+        }
+        this.process(this.storage, this.processQueue.poll());
+    }
+
+    public abstract void process(ACDataStorage storage, ACData data);
 }

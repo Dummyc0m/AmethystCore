@@ -17,18 +17,18 @@ import org.bukkit.inventory.ItemStack;
  * com.dummyc0m.amethystcore.test
  * Created by Dummyc0m on 4/3/15.
  */
-public class Compass extends ACItem {
+public class ItemCore extends ACItem {
     private ACMenu compassMenu;
 
-    public Compass() {
+    public ItemCore() {
     }
 
-    public Compass(ACItemData data, String module, String identifier) {
+    public ItemCore(ACItemData data, String module, String identifier) {
         super(data, module, identifier);
-        this.compassMenu = new ACMenu(27, "Compass");
+        this.compassMenu = new ACMenu(27, "AmethystCore");
         ACButton[] buttons = new ACButton[27];
-        ACButtonData buttonData = new ACButtonData(Material.COMPASS);
-        buttons[0] = new ACButton(buttonData) {
+        ACButtonData buttonData = new ACButtonData(Material.EMERALD);
+        buttons[13] = new ACButton(buttonData) {
             @Override
             public ItemStack onClick(ACMenu menu, HumanEntity humanEntity, ACMenu.ClickAction clickAction, ItemStack item) {
                 humanEntity.sendMessage("hahahahaha");

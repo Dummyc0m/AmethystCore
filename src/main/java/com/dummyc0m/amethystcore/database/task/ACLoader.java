@@ -16,4 +16,11 @@ public abstract class ACLoader implements Runnable {
         this.preparedStatement = preparedStatement;
     }
 
+    @Override
+    public void run() {
+        this.load(this.storage, this.preparedStatement);
+    }
+
+    public abstract void load(ACDataStorage storage, PreparedStatement preparedStatement);
+
 }

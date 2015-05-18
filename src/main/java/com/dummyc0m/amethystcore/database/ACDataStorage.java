@@ -10,5 +10,6 @@ import java.util.UUID;
 public interface ACDataStorage {
     void queueLoad(UUID uuid);
 
+    void queueProcess(ACData data);
     void queueSave(Player player);
 }
