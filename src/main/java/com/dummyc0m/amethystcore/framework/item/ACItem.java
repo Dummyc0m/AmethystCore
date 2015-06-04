@@ -17,8 +17,6 @@ import org.bukkit.util.Vector;
  */
 public abstract class ACItem {
 
-
-    private final String identifier;
     private final String module;
     private final String identifier;
     private ACItemData data;

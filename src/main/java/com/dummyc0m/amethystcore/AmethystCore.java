@@ -56,7 +56,7 @@ public class AmethystCore extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if ("amethystcore".equalsIgnoreCase(command.getName())) {
-            if (sender instanceof Player && sender.hasPermission("amethystcore.item_core")) {
+            if (sender instanceof Player && sender.hasPermission("amethystcore.command.item_core")) {
                 ((Player) sender).getInventory().addItem(this.itemCore.getItemStack());
                 return true;
             }

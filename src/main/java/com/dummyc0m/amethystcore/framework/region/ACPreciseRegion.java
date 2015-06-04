@@ -1,5 +1,7 @@
 package com.dummyc0m.amethystcore.framework.region;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
 
 /**
@@ -51,36 +53,31 @@ public class ACPreciseRegion {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
 
-        ACPreciseRegion region3d = (ACPreciseRegion) o;
+        ACPreciseRegion that = (ACPreciseRegion) o;
 
-        if (Double.compare(region3d.maxX, maxX) != 0) return false;
-        if (Double.compare(region3d.maxY, maxY) != 0) return false;
-        if (Double.compare(region3d.maxZ, maxZ) != 0) return false;
-        if (Double.compare(region3d.minX, minX) != 0) return false;
-        if (Double.compare(region3d.minY, minY) != 0) return false;
-        return Double.compare(region3d.minZ, minZ) == 0;
-
+        return new EqualsBuilder()
+                .append(maxX, that.maxX)
+                .append(minX, that.minX)
+                .append(maxY, that.maxY)
+                .append(minY, that.minY)
+                .append(maxZ, that.maxZ)
+                .append(minZ, that.minZ)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(maxX);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(minX);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(maxY);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(minY);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(maxZ);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(minZ);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return new HashCodeBuilder(17, 37)
+                .append(maxX)
+                .append(minX)
+                .append(maxY)
+                .append(minY)
+                .append(maxZ)
+                .append(minZ)
+                .toHashCode();
     }
 
     @Override

@@ -7,14 +7,14 @@ prefix: AC
 commands:
   amethystcore:
     description: This is a demo amethyst command.
-    usage: /<command> [player]
-    permission: amethystcore.item_core
+    usage: /amethystcore
+    permission: amethystcore.command.item_core
 
 permissions:
   amethystcore.*:
     description: Permission for all AmethystCore commands
     children:
       amethystcore.item_core: true
-  amethystcore.item_core:
+  amethystcore.command.item_core:
     description: demo command
     default: op

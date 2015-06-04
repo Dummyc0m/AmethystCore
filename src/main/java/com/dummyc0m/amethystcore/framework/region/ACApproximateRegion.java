@@ -1,5 +1,7 @@
 package com.dummyc0m.amethystcore.framework.region;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
 
 /**
@@ -51,28 +53,31 @@ public class ACApproximateRegion {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
 
-        ACApproximateRegion region3i = (ACApproximateRegion) o;
+        ACApproximateRegion that = (ACApproximateRegion) o;
 
-        if (maxX != region3i.maxX) return false;
-        if (maxY != region3i.maxY) return false;
-        if (maxZ != region3i.maxZ) return false;
-        if (minX != region3i.minX) return false;
-        if (minY != region3i.minY) return false;
-        return minZ == region3i.minZ;
-
+        return new EqualsBuilder()
+                .append(maxX, that.maxX)
+                .append(minX, that.minX)
+                .append(maxY, that.maxY)
+                .append(minY, that.minY)
+                .append(maxZ, that.maxZ)
+                .append(minZ, that.minZ)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result = maxX;
-        result = 31 * result + minX;
-        result = 31 * result + maxY;
-        result = 31 * result + minY;
-        result = 31 * result + maxZ;
-        result = 31 * result + minZ;
-        return result;
+        return new HashCodeBuilder(17, 37)
+                .append(maxX)
+                .append(minX)
+                .append(maxY)
+                .append(minY)
+                .append(maxZ)
+                .append(minZ)
+                .toHashCode();
     }
 
     @Override

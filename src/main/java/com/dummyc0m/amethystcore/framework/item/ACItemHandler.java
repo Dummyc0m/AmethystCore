@@ -4,6 +4,7 @@ import com.dummyc0m.amethystcore.util.ACFormat;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * com.dummyc0m.amethystcore.framework.item
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class ACItemHandler {
     private static ACItemHandler instance = new ACItemHandler();
-    private HashMap<String, ACItem> identifierMap = new HashMap<>();
+    private Map<String, ACItem> identifierMap = new HashMap<>();
 
     public static ACItemHandler getInstance() {
         return instance;
@@ -25,8 +26,8 @@ public class ACItemHandler {
         this.identifierMap.put(acItem.getIdentifier(), acItem);
     }
 
-    public ACItem unregisterItem(String identifier) {
-        return this.identifierMap.remove(identifier);
+    public void deregisterItem(String identifier) {
+        this.identifierMap.remove(identifier);
     }
 
     public ACItem getItem(String identifier) {
