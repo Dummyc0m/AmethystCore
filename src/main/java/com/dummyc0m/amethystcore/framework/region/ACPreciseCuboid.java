@@ -7,15 +7,15 @@ import org.bukkit.Location;
 /**
  * Created by Dummyc0m on 3/9/15.
  */
-public class ACApproximateRegion {
-    public final int maxX;
-    public final int minX;
-    public final int maxY;
-    public final int minY;
-    public final int maxZ;
-    public final int minZ;
+public abstract class ACPreciseCuboid implements ACCuboid {
+    public final double maxX;
+    public final double minX;
+    public final double maxY;
+    public final double minY;
+    public final double maxZ;
+    public final double minZ;
 
-    public ACApproximateRegion(int x1, int y1, int z1, int x2, int y2, int z2) {
+    public ACPreciseCuboid(double x1, double y1, double z1, double x2, double y2, double z2) {
         this.maxX = Math.max(x1, x2);
         this.minX = Math.min(x1, x2);
         this.maxY = Math.max(y1, y2);
@@ -24,16 +24,16 @@ public class ACApproximateRegion {
         this.minZ = Math.min(z1, z2);
     }
 
-    public ACApproximateRegion(Location loc1, Location loc2) {
-        this.maxX = Math.max(loc1.getBlockX(), loc2.getBlockX());
-        this.minX = Math.min(loc1.getBlockX(), loc2.getBlockX());
-        this.maxY = Math.max(loc1.getBlockY(), loc2.getBlockY());
-        this.minY = Math.min(loc1.getBlockY(), loc2.getBlockY());
-        this.maxZ = Math.max(loc1.getBlockZ(), loc2.getBlockZ());
-        this.minZ = Math.min(loc1.getBlockZ(), loc2.getBlockZ());
+    public ACPreciseCuboid(Location loc1, Location loc2) {
+        this.maxX = Math.max(loc1.getX(), loc2.getX());
+        this.minX = Math.min(loc1.getX(), loc2.getX());
+        this.maxY = Math.max(loc1.getY(), loc2.getY());
+        this.minY = Math.min(loc1.getY(), loc2.getY());
+        this.maxZ = Math.max(loc1.getZ(), loc2.getZ());
+        this.minZ = Math.min(loc1.getZ(), loc2.getZ());
     }
 
-    public ACApproximateRegion(ACApproximateRegion region) {
+    public ACPreciseCuboid(ACPreciseCuboid region) {
         this.maxX = region.maxX;
         this.minX = region.minX;
         this.maxY = region.maxY;
@@ -42,11 +42,12 @@ public class ACApproximateRegion {
         this.minZ = region.minZ;
     }
 
+    @Override
     public boolean contains(Location location){
-        return this.contains(location.getBlockX(), location.getBlockY(), location.getBlockZ());
+        return this.contains(location.getX(), location.getY(), location.getZ());
     }
 
-    public boolean contains(int x, int y, int z){
+    public boolean contains(double x, double y, double z){
         return x < this.maxX && x > this.minX && y < this.maxY && y > this.minY && z < this.maxZ && z > this.minZ;
     }
 
@@ -56,7 +57,7 @@ public class ACApproximateRegion {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        ACApproximateRegion that = (ACApproximateRegion) o;
+        ACPreciseCuboid that = (ACPreciseCuboid) o;
 
         return new EqualsBuilder()
                 .append(maxX, that.maxX)
@@ -82,7 +83,7 @@ public class ACApproximateRegion {
 
     @Override
     public String toString() {
-        return "AUApproximateRegion{" +
+        return "AUPreciseCuboid{" +
                 "maxX=" + maxX +
                 ", minX=" + minX +
                 ", maxY=" + maxY +

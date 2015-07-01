@@ -1,7 +1,5 @@
 package com.dummyc0m.amethystcore.framework.item;
 
-import com.dummyc0m.amethystcore.util.ACFormat;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +8,11 @@ import java.util.Map;
  * com.dummyc0m.amethystcore.framework.item
  * Created by Dummyc0m on 4/2/15.
  */
-public class ACItemHandler {
-    private static ACItemHandler instance = new ACItemHandler();
+public class ACItemManager {
+    private static ACItemManager instance = new ACItemManager();
     private Map<String, ACItem> identifierMap = new HashMap<>();
 
-    public static ACItemHandler getInstance() {
+    public static ACItemManager getInstance() {
         return instance;
     }
 
@@ -31,9 +29,9 @@ public class ACItemHandler {
     }
 
     public ACItem getItem(String identifier) {
-        if (identifier.startsWith(ACFormat.RESET + ACFormat.DARK_GRAY)) {
-            return this.identifierMap.get(identifier.replaceFirst(ACFormat.RESET + ACFormat.DARK_GRAY, ""));
+        if (identifier.startsWith("Hide:")) {
+            return this.identifierMap.get(identifier.replaceFirst("Hide:", ""));
         }
-        return null;
+        return this.identifierMap.get(identifier);
     }
 }

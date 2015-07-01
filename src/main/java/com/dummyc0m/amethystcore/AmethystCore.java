@@ -2,7 +2,7 @@ package com.dummyc0m.amethystcore;
 
 import com.dummyc0m.amethystcore.framework.inventory.InventoryListener;
 import com.dummyc0m.amethystcore.framework.item.ACItemData;
-import com.dummyc0m.amethystcore.framework.item.ACItemHandler;
+import com.dummyc0m.amethystcore.framework.item.ACItemManager;
 import com.dummyc0m.amethystcore.framework.item.ItemListener;
 import com.dummyc0m.amethystcore.framework.module.ModuleListener;
 import com.dummyc0m.amethystcore.framework.permission.PermissionListener;
@@ -42,7 +42,7 @@ public class AmethystCore extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new RegionListener(), this);
         logger.info("Registering Demo Item");
         this.itemCore = new ItemCore(new ACItemData(Material.COMPASS), "AmethystCore", "amethystcore:item_core");
-        ACItemHandler.getInstance().registerItem(itemCore);
+        ACItemManager.getInstance().registerItem(itemCore);
         logger.info("Enabled");
     }
 

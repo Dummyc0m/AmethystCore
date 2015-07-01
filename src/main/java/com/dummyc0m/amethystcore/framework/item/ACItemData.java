@@ -63,7 +63,7 @@ public class ACItemData {
         this.lores = lores;
 
         lores.add(ACFormat.RESET + ACFormat.BLUE + ACFormat.ITALIC + this.module);
-        lores.add(ACFormat.RESET + ACFormat.DARK_GRAY + this.identifier);
+        lores.add("Hide:" + this.identifier);
 
         this.itemInstance = new ItemStack(this.material, this.amount, this.damage);
         ItemMeta itemMeta = this.itemInstance.getItemMeta();

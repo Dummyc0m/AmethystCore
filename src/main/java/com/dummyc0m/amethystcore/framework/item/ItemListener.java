@@ -1,11 +1,21 @@
 package com.dummyc0m.amethystcore.framework.item;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.events.PacketEvent;
+import com.comphenix.protocol.reflect.StructureModifier;
+import com.dummyc0m.amethystcore.AmethystCore;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
@@ -15,7 +25,52 @@ import java.util.List;
  */
 public class ItemListener implements Listener {
 
-    private ACItemHandler handler = ACItemHandler.getInstance();
+    private ACItemManager handler = ACItemManager.getInstance();
+
+    public ItemListener() {
+        ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();
+        protocolManager.addPacketListener(new PacketAdapter(AmethystCore.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Server.SET_SLOT, PacketType.Play.Server.WINDOW_ITEMS) {
+            @Override
+            public void onPacketSending(PacketEvent event) {
+                if (event.getPacketType() == PacketType.Play.Server.SET_SLOT) {
+                    PacketContainer packet = event.getPacket().deepClone();
+                    StructureModifier<ItemStack> sm = packet.getItemModifier();
+                    for (int i = 0; i < sm.size(); i++) {
+                        if (sm.getValues().get(i) != null) {
+                            modifyItemStack(sm.getValues().get(i));
+                        }
+                    }
+                    event.setPacket(packet);
+                } else if (event.getPacketType() == PacketType.Play.Server.WINDOW_ITEMS) {
+                    PacketContainer packet = event.getPacket().deepClone();
+                    StructureModifier<ItemStack[]> sm = packet.getItemArrayModifier();
+                    for (int i = 0; i < sm.size(); i++) {
+                        for (int j = 0; j < sm.getValues().get(i).length; j++) {
+                            if (sm.getValues().get(j)[i] != null) {
+                                modifyItemStack(sm.getValues().get(j)[i]);
+                            }
+                        }
+                    }
+                    event.setPacket(packet);
+                }
+
+            }
+        });
+    }
+
+    private void modifyItemStack(ItemStack itemStack) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        if (itemMeta.hasLore()) {
+            List<String> lore = itemMeta.getLore();
+            for (String s : lore) {
+                if (s.startsWith("Hide:")) {
+                    lore.remove(s);
+                }
+            }
+            itemMeta.setLore(lore);
+        }
+        itemStack.setItemMeta(itemMeta);
+    }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){

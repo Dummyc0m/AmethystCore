@@ -33,7 +33,7 @@ public abstract class ACModule {
 
     private String identifier;
 
-    private ACModuleHandler handler = ACModuleHandler.getInstance();
+    private ACModuleManager handler = ACModuleManager.getInstance();
 
     public ACModule(Map<String, Boolean> permissions, ACInventoryData defaultInventory, Inventory defaultEnderChest, Location defaultSpawn, String resourcePack, String chatFormat, String tabListTop, String tabListBottom, String identifier) {
         this.permissions = permissions;
