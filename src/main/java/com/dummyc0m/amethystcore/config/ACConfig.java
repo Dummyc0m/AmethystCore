@@ -32,7 +32,7 @@ public class ACConfig {
             this.bReader = new BufferedReader(new FileReader(f));
             if(this.load() == null) this.useDefault();
         } catch (IOException e){
-            throw new RuntimeException("An error occurred when trying to instantiate a AUConfig", e);
+            throw new RuntimeException("An error occurred when trying to instantiate a ACConfig", e);
         }
     }
 
@@ -45,7 +45,7 @@ public class ACConfig {
             this.bReader = new BufferedReader(new FileReader(f));
             if(this.load() == null) this.useDefault();
         } catch (IOException e){
-            throw new RuntimeException("An error occurred when trying to instantiate a AUConfig", e);
+            throw new RuntimeException("An error occurred when trying to instantiate a ACConfig", e);
         }
     }
 

@@ -3,8 +3,8 @@ package com.dummyc0m.amethystcore.framework.region;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
-import org.bukkit.World;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +14,47 @@ import java.util.Map;
  */
 public class ACRegionManager {
     private static final ACRegionManager instance = new ACRegionManager();
-    private Map<String, ACRegion> stringRegionMap = new HashMap<>();
-    private Map<World, Map<ChunkRef, List<ACRegion>>> chunkRegionMap = new HashMap<>();
+    private Map<String, ACRegion> nameRegionMap = new HashMap<>();
+    private Map<String, Map<ChunkRef, List<ACRegion>>> worldChunkRegionMap = new HashMap<>();
 
     public static ACRegionManager getInstance() {
         return instance;
     }
 
     public void addRegion(ACRegion region) {
+        String world = region.getWorld();
+        Map<ChunkRef, List<ACRegion>> chunkRegionMap = worldChunkRegionMap.get(world);
+        if (chunkRegionMap == null) {
+            chunkRegionMap = new HashMap<>();
+            worldChunkRegionMap.put(world, chunkRegionMap);
+        }
+        for (ChunkRef chunkRef : region.getChunks()) {
+            List<ACRegion> regions = chunkRegionMap.get(chunkRef);
+            if (regions == null) {
+                regions = new ArrayList<>();
+                chunkRegionMap.put(chunkRef, regions);
+            }
+            regions.add(region);
+        }
+        nameRegionMap.put(region.getName(), region);
+    }
 
+    public ACRegion getRegion(Location location) {
+        String world = location.getWorld().getName();
+        ChunkRef chunkRef = new ChunkRef(location);
+        if (!worldChunkRegionMap.containsKey(world) || !worldChunkRegionMap.get(world).containsKey(chunkRef)) {
+            return null;
+        }
+        for (ACRegion region : worldChunkRegionMap.get(world).get(chunkRef)) {
+            if (region.contains(location)) {
+                return region;
+            }
+        }
+        return null;
+    }
+
+    public ACRegion getRegion(String name) {
+        return nameRegionMap.get(name);
     }
 
 
@@ -31,8 +63,8 @@ public class ACRegionManager {
         private final int z;
 
         public ChunkRef(Location loc) {
-            this.x = getChunkRef(loc.getBlockX());
-            this.z = getChunkRef(loc.getBlockZ());
+            this.x = getChunkCoords(loc.getBlockX());
+            this.z = getChunkCoords(loc.getBlockZ());
         }
 
         public ChunkRef(int x, int z) {
@@ -40,7 +72,7 @@ public class ACRegionManager {
             this.z = z;
         }
 
-        public static int getChunkRef(final int val) {
+        public static int getChunkCoords(final int val) {
             return val >> 4;
         }
 

@@ -1,8 +1,12 @@
 package com.dummyc0m.amethystcore.framework.region;
 
+import com.dummyc0m.amethystcore.framework.region.ACRegionManager.ChunkRef;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Dummyc0m on 3/9/15.
@@ -51,6 +55,20 @@ public abstract class ACApproximateCuboid implements ACCuboid {
         return x < this.maxX && x > this.minX && y < this.maxY && y > this.minY && z < this.maxZ && z > this.minZ;
     }
 
+    @Override
+    public List<ChunkRef> getChunks() {
+        List<ChunkRef> chunkRefs = new ArrayList<>();
+        int minX = ChunkRef.getChunkCoords(this.minX);
+        int minZ = ChunkRef.getChunkCoords(this.minZ);
+        int maxX = ChunkRef.getChunkCoords(this.maxX);
+        int maxZ = ChunkRef.getChunkCoords(this.maxZ);
+        for (int x = minX; x <= maxX; x++) {
+            for (int z = minZ; z <= maxZ; z++) {
+                chunkRefs.add(new ChunkRef(x, z));
+            }
+        }
+        return chunkRefs;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
