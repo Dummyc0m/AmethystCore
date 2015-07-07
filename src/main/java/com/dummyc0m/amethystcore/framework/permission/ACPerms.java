@@ -15,9 +15,9 @@ import java.util.UUID;
  * Created by Dummyc0m on 5/20/15.
  */
 public class ACPerms {
-    private static ACPerms INSTANCE = new ACPerms(AmethystCore.getInstance());
-    private Map<UUID, PermissionAttachment> attachmentMap;
-    private JavaPlugin plugin;
+    private static final ACPerms INSTANCE = new ACPerms(AmethystCore.getInstance());
+    private final Map<UUID, PermissionAttachment> attachmentMap;
+    private final JavaPlugin plugin;
     private Field pField;
 
     public ACPerms(JavaPlugin plugin) {

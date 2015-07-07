@@ -4,7 +4,6 @@ import com.dummyc0m.amethystcore.framework.inventory.InventoryListener;
 import com.dummyc0m.amethystcore.framework.item.ACItemData;
 import com.dummyc0m.amethystcore.framework.item.ACItemManager;
 import com.dummyc0m.amethystcore.framework.item.ItemListener;
-import com.dummyc0m.amethystcore.framework.module.ModuleListener;
 import com.dummyc0m.amethystcore.framework.permission.PermissionListener;
 import com.dummyc0m.amethystcore.framework.region.RegionListener;
 import com.dummyc0m.amethystcore.test.ItemCore;
@@ -37,7 +36,6 @@ public class AmethystCore extends JavaPlugin {
         logger.info("Registering Listeners");
         this.getServer().getPluginManager().registerEvents(new ItemListener(), this);
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this);
-        this.getServer().getPluginManager().registerEvents(new ModuleListener(), this);
         this.getServer().getPluginManager().registerEvents(new PermissionListener(), this);
         this.getServer().getPluginManager().registerEvents(new RegionListener(), this);
         logger.info("Registering Demo Item");

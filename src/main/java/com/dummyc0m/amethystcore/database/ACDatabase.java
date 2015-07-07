@@ -8,15 +8,14 @@ import java.sql.SQLException;
  * Created by Dummyc0m on 3/12/15.
  */
 public class ACDatabase {
+    private final String type;
+    private final String hostname;
+    private final int port;
+    private final String database;
+    private final String username;
+    private final String password;
     private boolean isConnected;
     private Connection connection;
-
-    private String type;
-    private String hostname;
-    private int port;
-    private String database;
-    private String username;
-    private String password;
 
     public ACDatabase(String type, String hostname, int port, String database, String username, String password) {
         this.type = type;

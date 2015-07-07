@@ -21,9 +21,9 @@ public enum Permission {
     CHAT("amethystcore.chat");
 
 
-    private String permission;
+    private final String permission;
 
-    Permission(final String permission) {
+    Permission(String permission) {
         this.permission = permission;
     }
 

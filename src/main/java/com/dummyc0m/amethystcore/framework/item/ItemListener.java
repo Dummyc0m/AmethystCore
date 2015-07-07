@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class ItemListener implements Listener {
 
-    private ACItemManager handler = ACItemManager.getInstance();
+    private final ACItemManager handler = ACItemManager.getInstance();
 
     public ItemListener() {
         ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();

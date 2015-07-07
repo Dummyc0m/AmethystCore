@@ -18,10 +18,7 @@ import org.bukkit.inventory.ItemStack;
  * Created by Dummyc0m on 4/3/15.
  */
 public class ItemCore extends ACItem {
-    private ACMenu compassMenu;
-
-    public ItemCore() {
-    }
+    private final ACMenu compassMenu;
 
     public ItemCore(ACItemData data, String module, String identifier) {
         super(data, module, identifier);

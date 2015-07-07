@@ -9,8 +9,8 @@ import java.util.Map;
  * Created by Dummyc0m on 4/2/15.
  */
 public class ACItemManager {
-    private static ACItemManager instance = new ACItemManager();
-    private Map<String, ACItem> identifierMap = new HashMap<>();
+    private static final ACItemManager instance = new ACItemManager();
+    private final Map<String, ACItem> identifierMap = new HashMap<>();
 
     public static ACItemManager getInstance() {
         return instance;

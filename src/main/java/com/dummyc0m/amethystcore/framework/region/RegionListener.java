@@ -15,8 +15,8 @@ import java.util.UUID;
 public class RegionListener implements Listener {
     private final ACRegionManager manager = ACRegionManager.getInstance();
 
-    private Map<UUID, Long> lastProcessed = new HashMap<>();
-    private Map<UUID, ACRegion> lastIn = new HashMap<>();
+    private final Map<UUID, Long> lastProcessed = new HashMap<>();
+    private final Map<UUID, ACRegion> lastIn = new HashMap<>();
 
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();

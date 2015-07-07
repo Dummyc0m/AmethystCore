@@ -14,8 +14,8 @@ import java.util.Map;
  */
 public class ACRegionManager {
     private static final ACRegionManager instance = new ACRegionManager();
-    private Map<String, ACRegion> nameRegionMap = new HashMap<>();
-    private Map<String, Map<ChunkRef, List<ACRegion>>> worldChunkRegionMap = new HashMap<>();
+    private final Map<String, ACRegion> nameRegionMap = new HashMap<>();
+    private final Map<String, Map<ChunkRef, List<ACRegion>>> worldChunkRegionMap = new HashMap<>();
 
     public static ACRegionManager getInstance() {
         return instance;

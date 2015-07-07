@@ -12,12 +12,12 @@ import java.util.List;
  * Created by Dummyc0m on 7/1/15.
  */
 public abstract class ACComplexRegion implements ACRegion {
-    private String world;
-    private List<ACCuboid> cuboids;
-    private String name;
-    private String displayName;
-    private String greeting;
-    private String farewell;
+    private final String world;
+    private final List<ACCuboid> cuboids;
+    private final String name;
+    private final String displayName;
+    private final String greeting;
+    private final String farewell;
 
     public ACComplexRegion(String world, List<ACCuboid> cuboids, String name, String displayName) {
         this.world = world;

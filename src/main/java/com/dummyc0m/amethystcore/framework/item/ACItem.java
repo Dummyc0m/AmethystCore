@@ -19,7 +19,7 @@ public abstract class ACItem {
 
     private final String module;
     private final String identifier;
-    private ACItemData data;
+    private final ACItemData data;
 
     public ACItem() {
         this(new ACItemData(), "Amethyst", "amethyst:default");
@@ -108,10 +108,6 @@ public abstract class ACItem {
 
     public ACItemData getData() {
         return this.data;
-    }
-
-    public void setData(ACItemData data) {
-        this.data = data;
     }
 
     public String getModule() {

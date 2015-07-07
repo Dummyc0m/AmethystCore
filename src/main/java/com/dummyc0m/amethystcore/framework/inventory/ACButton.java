@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
  * Created by Dummyc0m on 3/19/15.
  */
 public abstract class ACButton {
-    private ACButtonData data;
+    private final ACButtonData data;
 
     public ACButton(ACButtonData data) {
         this.data = data;

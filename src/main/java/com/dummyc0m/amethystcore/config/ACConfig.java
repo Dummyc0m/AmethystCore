@@ -4,6 +4,8 @@ import com.dummyc0m.amethystcore.AmethystCore;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -12,11 +14,11 @@ import java.lang.reflect.Constructor;
  * Created by Dummyc0m on 3/3/15.
  */
 public class ACConfig {
-    private BufferedReader bReader;
-    private FileWriter fWriter;
-    private Class<?> settingsClass;
+    private final BufferedReader bReader;
+    private final FileWriter fWriter;
+    private final Class<?> settingsClass;
+    private final Gson gson;
     private Object settings;
-    private Gson gson;
 
     public ACConfig(String file, Class<?> settingsClass) {
         this.settingsClass = settingsClass;
@@ -86,25 +88,28 @@ public class ACConfig {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
 
-        ACConfig that = (ACConfig) o;
+        ACConfig acConfig = (ACConfig) o;
 
-        if (bReader != null ? !bReader.equals(that.bReader) : that.bReader != null) return false;
-        if (fWriter != null ? !fWriter.equals(that.fWriter) : that.fWriter != null) return false;
-        if (gson != null ? !gson.equals(that.gson) : that.gson != null) return false;
-        if (settings != null ? !settings.equals(that.settings) : that.settings != null) return false;
-        return !(settingsClass != null ? !settingsClass.equals(that.settingsClass) : that.settingsClass != null);
-
+        return new EqualsBuilder()
+                .append(bReader, acConfig.bReader)
+                .append(fWriter, acConfig.fWriter)
+                .append(settingsClass, acConfig.settingsClass)
+                .append(settings, acConfig.settings)
+                .append(gson, acConfig.gson)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result = bReader != null ? bReader.hashCode() : 0;
-        result = 31 * result + (fWriter != null ? fWriter.hashCode() : 0);
-        result = 31 * result + (settingsClass != null ? settingsClass.hashCode() : 0);
-        result = 31 * result + (settings != null ? settings.hashCode() : 0);
-        result = 31 * result + (gson != null ? gson.hashCode() : 0);
-        return result;
+        return new HashCodeBuilder(17, 37)
+                .append(bReader)
+                .append(fWriter)
+                .append(settingsClass)
+                .append(settings)
+                .append(gson)
+                .toHashCode();
     }
 }

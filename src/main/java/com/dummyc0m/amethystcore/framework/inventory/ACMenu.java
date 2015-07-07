@@ -16,11 +16,10 @@ import java.util.List;
  * Created by Dummyc0m on 3/15/15.
  */
 public class ACMenu {
-    private int size;
-    private String title;
+    private final int size;
+    private final String title;
+    private final List<ACMenuHolder> viewers = new ArrayList<>();
     private ACButton[] contents;
-
-    private List<ACMenuHolder> viewers = new ArrayList<>();
 
     public ACMenu(int size, String title, ACButton[] contents) {
         this.size = size;
@@ -49,7 +48,7 @@ public class ACMenu {
      * @param who The player.
      */
     public void onClose(Inventory inventory, HumanEntity who){
-        this.viewers.remove((ACMenuHolder) inventory.getHolder());
+        this.viewers.remove(inventory.getHolder());
     }
 
     /**
