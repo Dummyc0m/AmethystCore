@@ -9,11 +9,12 @@ import java.util.Map;
  * Created by Dummyc0m on 4/2/15.
  */
 public class ACItemManager {
-    private static final ACItemManager instance = new ACItemManager();
-    private final Map<String, ACItem> identifierMap = new HashMap<>();
+    private final Map<String, ACItem> identifierMap;
+    private final String hideFlag;
 
-    public static ACItemManager getInstance() {
-        return instance;
+    public ACItemManager() {
+        identifierMap = new HashMap<>();
+        hideFlag = "Hide:";
     }
 
     public void registerItems(List<ACItem> acItems) {
@@ -29,8 +30,8 @@ public class ACItemManager {
     }
 
     public ACItem getItem(String identifier) {
-        if (identifier.startsWith("Hide:")) {
-            return this.identifierMap.get(identifier.replaceFirst("Hide:", ""));
+        if (identifier.startsWith(hideFlag)) {
+            return this.identifierMap.get(identifier.replaceFirst(hideFlag, ""));
         }
         return this.identifierMap.get(identifier);
     }

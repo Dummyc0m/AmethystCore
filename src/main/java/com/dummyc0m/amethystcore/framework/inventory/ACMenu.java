@@ -18,18 +18,18 @@ import java.util.List;
 public class ACMenu {
     private final int size;
     private final String title;
-    private final List<ACMenuHolder> viewers = new ArrayList<>();
+    private final List<ACMenuHolder> viewers;
     private ACButton[] contents;
 
     public ACMenu(int size, String title, ACButton[] contents) {
-        this.size = size;
-        this.title = title;
+        this(size, title);
         this.contents = contents;
     }
 
     public ACMenu(int size, String title) {
         this.size = size;
         this.title = title;
+        this.viewers = new ArrayList<>();
     }
 
     /**

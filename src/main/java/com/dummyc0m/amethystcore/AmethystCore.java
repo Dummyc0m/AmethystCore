@@ -1,8 +1,11 @@
 package com.dummyc0m.amethystcore;
 
 import com.dummyc0m.amethystcore.framework.inventory.InventoryListener;
+import com.dummyc0m.amethystcore.framework.item.ACItemManager;
 import com.dummyc0m.amethystcore.framework.item.ItemListener;
+import com.dummyc0m.amethystcore.framework.permission.ACPerms;
 import com.dummyc0m.amethystcore.framework.permission.PermissionListener;
+import com.dummyc0m.amethystcore.framework.region.ACRegionManager;
 import com.dummyc0m.amethystcore.framework.region.RegionListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,6 +20,9 @@ import java.util.logging.Logger;
  */
 public class AmethystCore extends JavaPlugin {
     private static AmethystCore AMETHYSTCORE;
+    private ACItemManager itemManager;
+    private ACPerms perms;
+    private ACRegionManager regionManager;
     private Logger logger = this.getLogger();
     private String version = "1.0-SNAPSHOT For 1.8.7";
 
@@ -24,14 +30,31 @@ public class AmethystCore extends JavaPlugin {
         return AMETHYSTCORE;
     }
 
+    public ACItemManager getItemManager() {
+        return itemManager;
+    }
+
+    public ACPerms getPerms() {
+        return perms;
+    }
+
+    public ACRegionManager getRegionManager() {
+        return regionManager;
+    }
+
     @Override
     public void onEnable() {
+        logger.info("Loading Configurations");
+        //TODO configuration
         AMETHYSTCORE = this;
+        itemManager = new ACItemManager();
+        perms = new ACPerms();
+        regionManager = new ACRegionManager();
         logger.info("Registering Listeners");
-        this.getServer().getPluginManager().registerEvents(new ItemListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ItemListener(itemManager), this);
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this);
         this.getServer().getPluginManager().registerEvents(new PermissionListener(), this);
-        this.getServer().getPluginManager().registerEvents(new RegionListener(), this);
+        this.getServer().getPluginManager().registerEvents(new RegionListener(regionManager), this);
         logger.info("Enabled");
     }
 

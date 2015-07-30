@@ -13,13 +13,8 @@ import java.util.Map;
  * Created by Dummyc0m on 6/4/15.
  */
 public class ACRegionManager {
-    private static final ACRegionManager instance = new ACRegionManager();
     private final Map<String, ACRegion> nameRegionMap = new HashMap<>();
     private final Map<String, Map<ChunkRef, List<ACRegion>>> worldChunkRegionMap = new HashMap<>();
-
-    public static ACRegionManager getInstance() {
-        return instance;
-    }
 
     public void addRegion(ACRegion region) {
         String world = region.getWorld();

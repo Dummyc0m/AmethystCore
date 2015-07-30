@@ -25,9 +25,10 @@ import java.util.List;
  */
 public class ItemListener implements Listener {
 
-    private final ACItemManager handler = ACItemManager.getInstance();
+    private final ACItemManager manager;
 
-    public ItemListener() {
+    public ItemListener(ACItemManager manager) {
+        this.manager = manager;
         ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();
         protocolManager.addPacketListener(new PacketAdapter(AmethystCore.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Server.SET_SLOT, PacketType.Play.Server.WINDOW_ITEMS) {
             @Override
@@ -77,7 +78,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getItem();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onInteract(event.getPlayer(), event.getAction(), event.getClickedBlock(), event.getBlockFace()));
         }
@@ -88,7 +89,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getPlayer().getItemInHand();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onEntityInteract(event.getPlayer(), event.getRightClicked(), event.getClickedPosition()));
         }
@@ -99,7 +100,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getItem().getItemStack();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onPickUp(event.getPlayer(), event.getRemaining()));
         }
@@ -110,7 +111,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getItemDrop().getItemStack();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onDrop(event.getPlayer()));
         }
@@ -121,7 +122,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getPlayer().getItemInHand();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if (item != null) {
             event.setCancelled(item.onSelected(event.getPlayer(), event.getPreviousSlot(), event.getNewSlot()));
         }
@@ -132,7 +133,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getItem();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onConsume(event.getPlayer()));
         }
@@ -143,7 +144,7 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getBrokenItem();
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             item.onBreak(event.getPlayer());
         }
@@ -155,7 +156,7 @@ public class ItemListener implements Listener {
         if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasLore()) return;
         List<String> lore = itemStack.getItemMeta().getLore();
         if(lore == null) return;
-        ACItem item = handler.getItem(lore.get(lore.size() - 1));
+        ACItem item = manager.getItem(lore.get(lore.size() - 1));
         if(item != null){
             event.setCancelled(item.onInventoryInteract(event.getWhoClicked(), event.getSlotType(), event.getSlot(), event.getClick(), itemStack));
         }

@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class ACItemData {
     }
 
     public ACItemData(Material material) {
-        this(material, (short) 0, 1, null);
+        this(material, (short) 0, 1, new ArrayList<>());
     }
 
     public ACItemData(Material material, short damage, int amount, List<String> lores) {
@@ -43,8 +44,8 @@ public class ACItemData {
     /**
      * @param transformable true if the player is able to pick up this item.
      */
-    private ACItemData(Material material, short damage, int amount, boolean clickable, boolean interactable, boolean inventoryInteractable, boolean droppable, boolean consumable, boolean transformable) {
-        this(material, damage, amount, null, clickable, interactable, inventoryInteractable, droppable, consumable, transformable);
+    public ACItemData(Material material, short damage, int amount, boolean clickable, boolean interactable, boolean inventoryInteractable, boolean droppable, boolean consumable, boolean transformable) {
+        this(material, damage, amount, new ArrayList<>(), clickable, interactable, inventoryInteractable, droppable, consumable, transformable);
     }
 
     /**

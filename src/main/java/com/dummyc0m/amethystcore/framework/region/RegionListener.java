@@ -13,10 +13,16 @@ import java.util.UUID;
  * Created by Dummyc0m on 4/9/15.
  */
 public class RegionListener implements Listener {
-    private final ACRegionManager manager = ACRegionManager.getInstance();
+    private final ACRegionManager manager;
 
-    private final Map<UUID, Long> lastProcessed = new HashMap<>();
-    private final Map<UUID, ACRegion> lastIn = new HashMap<>();
+    private final Map<UUID, Long> lastProcessed;
+    private final Map<UUID, ACRegion> lastIn;
+
+    public RegionListener(ACRegionManager manager) {
+        this.manager = manager;
+        this.lastProcessed = new HashMap<>();
+        this.lastIn = new HashMap<>();
+    }
 
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
