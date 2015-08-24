@@ -1,7 +1,7 @@
 package com.dummyc0m.amethystcore.region.cuboid;
 
-import com.dummyc0m.amethystcore.region.ACRegionManager.ChunkRef;
-import com.dummyc0m.amethystcore.util.CoreMath;
+import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
+import com.dummyc0m.amethystcore.util.MathUtil;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Bukkit;
@@ -106,7 +106,7 @@ public class ACApproximateCuboid implements IACCuboid {
 
     @Override
     public Location getRandomPoint() {
-        return new Location(Bukkit.getWorld(world), CoreMath.random(minX, maxX), CoreMath.random(minY, maxY), CoreMath.random(minZ, maxZ));
+        return new Location(Bukkit.getWorld(world), MathUtil.random(minX, maxX), MathUtil.random(minY, maxY), MathUtil.random(minZ, maxZ));
     }
 
     @Override

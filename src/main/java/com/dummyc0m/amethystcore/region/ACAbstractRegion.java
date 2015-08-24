@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region;
 
-import com.dummyc0m.amethystcore.util.CoreFormat;
+import com.dummyc0m.amethystcore.util.FormatUtil;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.entity.Player;
@@ -17,8 +17,8 @@ public abstract class ACAbstractRegion implements IACRegion {
     public ACAbstractRegion(String name, String displayName) {
         this.name = name;
         this.displayName = displayName;
-        this.greeting = CoreFormat.GRAY + "[已进入" + displayName + "]";
-        this.farewell = CoreFormat.GRAY + "[已离开" + displayName + "]";
+        this.greeting = FormatUtil.GRAY + "[已进入" + displayName + "]";
+        this.farewell = FormatUtil.GRAY + "[已离开" + displayName + "]";
     }
 
     @Override

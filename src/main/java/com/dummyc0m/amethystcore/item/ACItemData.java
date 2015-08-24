@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.item;
 
-import com.dummyc0m.amethystcore.util.CoreFormat;
+import com.dummyc0m.amethystcore.util.FormatUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -63,7 +63,7 @@ public class ACItemData {
         this.damage = damage;
         this.lores = lores;
 
-        lores.add(CoreFormat.RESET + CoreFormat.BLUE + CoreFormat.ITALIC + this.module);
+        lores.add(FormatUtil.RESET + FormatUtil.BLUE + FormatUtil.ITALIC + this.module);
         lores.add("Hide:" + this.identifier);
 
         this.itemInstance = new ItemStack(this.material, this.amount, this.damage);

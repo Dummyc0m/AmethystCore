@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.spawner;
 
-import com.dummyc0m.amethystcore.region.ACRegionManager;
+import com.dummyc0m.amethystcore.region.CoreRegion;
 import com.dummyc0m.amethystcore.region.cuboid.IACCuboid;
 import org.bukkit.Location;
 
@@ -23,7 +23,7 @@ public class ACCuboidSpawner extends ACAbstractSpawner {
     }
 
     @Override
-    public List<ACRegionManager.ChunkRef> getChunks() {
+    public List<CoreRegion.ChunkRef> getChunks() {
         return cuboid.getChunks();
     }
 

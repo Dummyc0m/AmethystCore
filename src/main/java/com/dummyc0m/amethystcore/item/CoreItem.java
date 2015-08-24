@@ -8,11 +8,11 @@ import java.util.Map;
  * com.dummyc0m.amethystcore.item
  * Created by Dummyc0m on 4/2/15.
  */
-public class ACItemManager {
+public class CoreItem {
     private final Map<String, ACAbstractItem> identifierMap;
     private final String hideFlag;
 
-    public ACItemManager() {
+    public CoreItem() {
         identifierMap = new HashMap<>();
         hideFlag = "Hide:";
     }

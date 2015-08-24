@@ -13,12 +13,12 @@ import java.util.UUID;
  * Created by Dummyc0m on 4/9/15.
  */
 public class RegionListener implements Listener {
-    private final ACRegionManager manager;
+    private final CoreRegion manager;
 
     private final Map<UUID, Long> lastProcessed;
     private final Map<UUID, IACRegion> lastIn;
 
-    public RegionListener(ACRegionManager manager) {
+    public RegionListener(CoreRegion manager) {
         this.manager = manager;
         this.lastProcessed = new HashMap<>();
         this.lastIn = new HashMap<>();

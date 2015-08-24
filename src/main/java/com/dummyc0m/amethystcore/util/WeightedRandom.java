@@ -10,6 +10,10 @@ import java.util.Random;
 public class WeightedRandom {
     private static Random random = new Random();
 
+    private WeightedRandom() {
+        //UTIL CLASS
+    }
+
     public static int getWeight(Collection<? extends IWeightedItem> IWeightedItems) {
         int sum = 0;
         for (IWeightedItem IWeightedItem : IWeightedItems) {

@@ -1,11 +1,11 @@
 package com.dummyc0m.amethystcore;
 
 import com.dummyc0m.amethystcore.inventory.InventoryListener;
-import com.dummyc0m.amethystcore.item.ACItemManager;
+import com.dummyc0m.amethystcore.item.CoreItem;
 import com.dummyc0m.amethystcore.item.ItemListener;
 import com.dummyc0m.amethystcore.permission.CorePermission;
 import com.dummyc0m.amethystcore.permission.PermissionListener;
-import com.dummyc0m.amethystcore.region.ACRegionManager;
+import com.dummyc0m.amethystcore.region.CoreRegion;
 import com.dummyc0m.amethystcore.region.RegionListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,9 +20,9 @@ import java.util.logging.Logger;
  */
 public class AmethystCore extends JavaPlugin {
     private static AmethystCore AMETHYSTCORE;
-    private ACItemManager itemManager;
+    private CoreItem itemManager;
     private CorePermission perms;
-    private ACRegionManager regionManager;
+    private CoreRegion regionManager;
     private Logger logger = this.getLogger();
     private String version = "1.0-SNAPSHOT For 1.8.7";
 
@@ -30,7 +30,7 @@ public class AmethystCore extends JavaPlugin {
         return AMETHYSTCORE;
     }
 
-    public ACItemManager getItemManager() {
+    public CoreItem getItemManager() {
         return itemManager;
     }
 
@@ -38,7 +38,7 @@ public class AmethystCore extends JavaPlugin {
         return perms;
     }
 
-    public ACRegionManager getRegionManager() {
+    public CoreRegion getRegionManager() {
         return regionManager;
     }
 
@@ -47,9 +47,9 @@ public class AmethystCore extends JavaPlugin {
         logger.info("Loading Configurations");
         //TODO configuration
         AMETHYSTCORE = this;
-        itemManager = new ACItemManager();
+        itemManager = new CoreItem();
         perms = new CorePermission();
-        regionManager = new ACRegionManager();
+        regionManager = new CoreRegion();
         logger.info("Registering Listeners");
         this.getServer().getPluginManager().registerEvents(new ItemListener(itemManager), this);
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this);

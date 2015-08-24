@@ -4,7 +4,7 @@ package com.dummyc0m.amethystcore.util;
  * com.dummyc0m.amethystcore.util
  * Created by Dummyc0m on 4/2/15.
  */
-public class CoreFormat {
+public class FormatUtil {
     public static final String BLACK = "§0";
     public static final String DARK_BLUE = "§1";
     public static final String DARK_GREEN = "§2";
@@ -28,4 +28,8 @@ public class CoreFormat {
     public static final String ITALIC = "§o";
     public static final String RESET = "§r";
     public static final String LINE_FEED = "\n";
+
+    private FormatUtil() {
+        //UTIL CLASS
+    }
 }

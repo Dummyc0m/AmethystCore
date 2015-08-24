@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.spawner;
 
-import com.dummyc0m.amethystcore.region.ACRegionManager;
+import com.dummyc0m.amethystcore.region.CoreRegion;
 import org.bukkit.Location;
 import org.bukkit.World;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public interface IACSpawner {
     boolean contains(Location location);
 
-    List<ACRegionManager.ChunkRef> getChunks();
+    List<CoreRegion.ChunkRef> getChunks();
 
     World getWorld();
 

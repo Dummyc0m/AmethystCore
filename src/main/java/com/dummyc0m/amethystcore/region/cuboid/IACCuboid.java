@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.cuboid;
 
-import com.dummyc0m.amethystcore.region.ACRegionManager.ChunkRef;
+import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
 import com.dummyc0m.amethystcore.util.WeightedRandom;
 import org.bukkit.Location;
 

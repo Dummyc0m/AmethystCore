@@ -25,9 +25,9 @@ import java.util.List;
  */
 public class ItemListener implements Listener {
 
-    private final ACItemManager manager;
+    private final CoreItem manager;
 
-    public ItemListener(ACItemManager manager) {
+    public ItemListener(CoreItem manager) {
         this.manager = manager;
         ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();
         protocolManager.addPacketListener(new PacketAdapter(AmethystCore.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Server.SET_SLOT, PacketType.Play.Server.WINDOW_ITEMS) {

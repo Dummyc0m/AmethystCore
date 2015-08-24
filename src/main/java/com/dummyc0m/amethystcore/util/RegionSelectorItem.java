@@ -30,20 +30,5 @@ public class RegionSelectorItem extends ACAbstractItem {
         }
         return super.onInteract(who, action, clickedBlock, clickedFace);
     }
-//
-//    public void setMetadata(Metadatable object, String key, Object value, Plugin plugin) {
-//        object.setMetadata(key, new FixedMetadataValue(plugin,value));
-//    }
-//
-//    public Object getMetadata(Metadatable object, String key, Plugin plugin) {
-//        List<MetadataValue> values = object.getMetadata(key);
-//        for (MetadataValue value : values) {
-//            // Plugins are singleton objects, so using == is safe here
-//            if (value.getOwningPlugin() == plugin) {
-//                return value.value();
-//            }
-//        }
-//        return null;
-//    }
 
 }

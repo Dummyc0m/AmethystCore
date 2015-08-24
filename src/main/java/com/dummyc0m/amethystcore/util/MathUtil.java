@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by Dummyc0m on 3/3/15.
  * Requires testinggam
  */
-public class CoreMath {
+public class MathUtil {
     private static final float[] SIN_TABLE = new float[65536];
     private static final Random random = new Random();
 
@@ -14,6 +14,10 @@ public class CoreMath {
         for (int var0 = 0; var0 < 65536; ++var0) {
             SIN_TABLE[var0] = (float) Math.sin((double) var0 * Math.PI * 2.0D / 65536.0D);
         }
+    }
+
+    private MathUtil() {
+        //UTIL CLASS
     }
 
     public static int random(int min, int max) {

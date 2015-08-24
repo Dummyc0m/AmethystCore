@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Dummyc0m on 6/4/15.
  */
-public class ACRegionManager {
+public class CoreRegion {
     private final Map<String, IACRegion> nameRegionMap = new HashMap<>();
     private final Map<String, Map<ChunkRef, List<IACRegion>>> worldChunkRegionMap = new HashMap<>();
 
