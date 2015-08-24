@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Dummyc0m on 6/6/15.
  */
-public interface IACCuboid extends WeightedRandom.IWeightedItem {
+public interface ICuboid extends WeightedRandom.IWeightedItem {
     boolean contains(Location location);
 
     List<ChunkRef> getChunks();

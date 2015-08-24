@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 /**
  * Created by Dummyc0m on 8/16/15.
  */
-public abstract class ACAbstractRegion implements IACRegion {
+public abstract class ACAbstractRegion implements IRegion {
     private final String name;
     private final String displayName;
     private final String greeting;

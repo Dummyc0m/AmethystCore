@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Dummyc0m on 7/1/15.
  */
-public interface IACRegion {
+public interface IRegion {
     boolean contains(Location location);
 
     /*

@@ -1,7 +1,7 @@
 package com.dummyc0m.amethystcore.region;
 
 import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
-import com.dummyc0m.amethystcore.region.cuboid.IACCuboid;
+import com.dummyc0m.amethystcore.region.cuboid.ICuboid;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
@@ -13,9 +13,9 @@ import java.util.List;
  * Created by Dummyc0m on 7/1/15.
  */
 public class ACComplexRegion extends ACAbstractRegion {
-    private final List<IACCuboid> cuboids;
+    private final List<ICuboid> cuboids;
 
-    public ACComplexRegion(List<IACCuboid> cuboids, String name, String displayName) {
+    public ACComplexRegion(List<ICuboid> cuboids, String name, String displayName) {
         super(name, displayName);
         if (cuboids == null || cuboids.isEmpty()) {
             throw new IllegalArgumentException("Cuboid list is empty");
@@ -30,7 +30,7 @@ public class ACComplexRegion extends ACAbstractRegion {
 
     @Override
     public boolean contains(Location location) {
-        for (IACCuboid cuboid : cuboids) {
+        for (ICuboid cuboid : cuboids) {
             if (cuboid.contains(location)) {
                 return true;
             }
@@ -41,7 +41,7 @@ public class ACComplexRegion extends ACAbstractRegion {
     @Override
     public List<ChunkRef> getChunks() {
         List<ChunkRef> chunkRefs = new ArrayList<>();
-        for (IACCuboid cuboid : cuboids) {
+        for (ICuboid cuboid : cuboids) {
             chunkRefs.addAll(cuboid.getChunks());
         }
         return chunkRefs;

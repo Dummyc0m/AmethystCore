@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Dummyc0m on 3/9/15.
  */
-public class ACPreciseCuboid implements IACCuboid {
+public class ACPreciseCuboid implements ICuboid {
     private final double maxX;
     private final double minX;
     private final double maxY;

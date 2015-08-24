@@ -1,7 +1,7 @@
 package com.dummyc0m.amethystcore.region;
 
 import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
-import com.dummyc0m.amethystcore.region.cuboid.IACCuboid;
+import com.dummyc0m.amethystcore.region.cuboid.ICuboid;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.bukkit.Location;
@@ -12,9 +12,9 @@ import java.util.List;
  * Created by Dummyc0m on 7/1/15.
  */
 public class ACCuboidRegion extends ACAbstractRegion {
-    private final IACCuboid cuboid;
+    private final ICuboid cuboid;
 
-    public ACCuboidRegion(IACCuboid cuboid, String name, String displayName) {
+    public ACCuboidRegion(ICuboid cuboid, String name, String displayName) {
         super(name, displayName);
         if (cuboid == null) {
             throw new IllegalArgumentException("Cuboid cannot be null");

@@ -29,7 +29,7 @@ public class ACConfig {
                 .serializeNulls()
                 .create();
         try {
-            File f = new File(AmethystCore.getInstance().getDataFolder() + file);
+            File f = new File(AmethystCore.getInstance().getDataFolder() + File.separator + file);
             this.fWriter = new FileWriter(f);
             this.bReader = new BufferedReader(new FileReader(f));
             if(this.load() == null) this.useDefault();
@@ -42,7 +42,7 @@ public class ACConfig {
         this.settingsClass = settingsClass;
         this.gson = gson;
         try {
-            File f = new File(AmethystCore.getInstance().getDataFolder() + file);
+            File f = new File(AmethystCore.getInstance().getDataFolder() + File.separator + file);
             this.fWriter = new FileWriter(f);
             this.bReader = new BufferedReader(new FileReader(f));
             if(this.load() == null) this.useDefault();

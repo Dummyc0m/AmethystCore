@@ -1,10 +1,13 @@
 package com.dummyc0m.amethystcore;
 
+import com.dummyc0m.amethystcore.config.ACConfig;
 import com.dummyc0m.amethystcore.inventory.InventoryListener;
 import com.dummyc0m.amethystcore.item.CoreItem;
 import com.dummyc0m.amethystcore.item.ItemListener;
+import com.dummyc0m.amethystcore.npc.CoreNPC;
+import com.dummyc0m.amethystcore.npc.NPCListener;
 import com.dummyc0m.amethystcore.permission.CorePermission;
-import com.dummyc0m.amethystcore.permission.PermissionListener;
+import com.dummyc0m.amethystcore.permission.PermissionGroups;
 import com.dummyc0m.amethystcore.region.CoreRegion;
 import com.dummyc0m.amethystcore.region.RegionListener;
 import org.bukkit.command.Command;
@@ -20,11 +23,20 @@ import java.util.logging.Logger;
  */
 public class AmethystCore extends JavaPlugin {
     private static AmethystCore AMETHYSTCORE;
+    private String version = "1.0-SNAPSHOT For 1.8.8";
+
     private CoreItem itemManager;
-    private CorePermission perms;
+
+    private CorePermission permissionManager;
+    private PermissionGroups permissionGroups;
+    private ACConfig permissionGroupsConfig;
+
     private CoreRegion regionManager;
+
+    private CoreNPC npcManager;
+    private ACConfig coreNPCConfig;
+
     private Logger logger = this.getLogger();
-    private String version = "1.0-SNAPSHOT For 1.8.7";
 
     public static AmethystCore getInstance() {
         return AMETHYSTCORE;
@@ -34,41 +46,66 @@ public class AmethystCore extends JavaPlugin {
         return itemManager;
     }
 
-    public CorePermission getPerms() {
-        return perms;
+    public CorePermission getPermissionManager() {
+        return permissionManager;
     }
 
     public CoreRegion getRegionManager() {
         return regionManager;
     }
 
+    public PermissionGroups getPermissionGroups() {
+        return permissionGroups;
+    }
+
+    public CoreNPC getNpcManager() {
+        return npcManager;
+    }
+
     @Override
     public void onEnable() {
-        logger.info("Loading Configurations");
-        //TODO configuration
         AMETHYSTCORE = this;
+
+        logger.info("Loading Configurations");
+        //NPC File
+        coreNPCConfig = new ACConfig("CoreNPC.json", CoreNPC.class);
+        npcManager = (CoreNPC) coreNPCConfig.getSettings();
+        assert npcManager != null;
+        //Permission File
+        permissionGroupsConfig = new ACConfig("PermissionGroups.json", PermissionGroups.class);
+        permissionGroups = (PermissionGroups) permissionGroupsConfig.getSettings();
+        assert permissionGroups != null;
+
+        logger.info("Loading Cores");
         itemManager = new CoreItem();
-        perms = new CorePermission();
+        permissionManager = new CorePermission(permissionGroups);
         regionManager = new CoreRegion();
+
         logger.info("Registering Listeners");
         this.getServer().getPluginManager().registerEvents(new ItemListener(itemManager), this);
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this);
-        this.getServer().getPluginManager().registerEvents(new PermissionListener(), this);
+        this.getServer().getPluginManager().registerEvents(new NPCListener(this, npcManager), this);
         this.getServer().getPluginManager().registerEvents(new RegionListener(regionManager), this);
+
         logger.info("Enabled");
     }
 
     @Override
     public void onDisable() {
+        logger.info("Saving Configurations");
+        coreNPCConfig.save();
+        permissionGroupsConfig.save();
+
         logger.info("Removing Listeners");
         HandlerList.unregisterAll(this);
+
         logger.info("Disabled");
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if ("amethystcore".equalsIgnoreCase(command.getName())) {
-            sender.sendMessage("Running AmethystCore Version." + version);
+            sender.sendMessage("Running AmethystCore Ver." + version);
         }
         return false;
     }

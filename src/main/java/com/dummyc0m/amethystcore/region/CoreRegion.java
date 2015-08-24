@@ -13,18 +13,18 @@ import java.util.Map;
  * Created by Dummyc0m on 6/4/15.
  */
 public class CoreRegion {
-    private final Map<String, IACRegion> nameRegionMap = new HashMap<>();
-    private final Map<String, Map<ChunkRef, List<IACRegion>>> worldChunkRegionMap = new HashMap<>();
+    private final Map<String, IRegion> nameRegionMap = new HashMap<>();
+    private final Map<String, Map<ChunkRef, List<IRegion>>> worldChunkRegionMap = new HashMap<>();
 
-    public void addRegion(IACRegion region) {
+    public void addRegion(IRegion region) {
         String world = region.getWorld();
-        Map<ChunkRef, List<IACRegion>> chunkRegionMap = worldChunkRegionMap.get(world);
+        Map<ChunkRef, List<IRegion>> chunkRegionMap = worldChunkRegionMap.get(world);
         if (chunkRegionMap == null) {
             chunkRegionMap = new HashMap<>();
             worldChunkRegionMap.put(world, chunkRegionMap);
         }
         for (ChunkRef chunkRef : region.getChunks()) {
-            List<IACRegion> regions = chunkRegionMap.get(chunkRef);
+            List<IRegion> regions = chunkRegionMap.get(chunkRef);
             if (regions == null) {
                 regions = new ArrayList<>();
                 chunkRegionMap.put(chunkRef, regions);
@@ -34,13 +34,13 @@ public class CoreRegion {
         nameRegionMap.put(region.getName(), region);
     }
 
-    public IACRegion getRegion(Location location) {
+    public IRegion getRegion(Location location) {
         String world = location.getWorld().getName();
         ChunkRef chunkRef = new ChunkRef(location);
         if (!worldChunkRegionMap.containsKey(world) || !worldChunkRegionMap.get(world).containsKey(chunkRef)) {
             return null;
         }
-        for (IACRegion region : worldChunkRegionMap.get(world).get(chunkRef)) {
+        for (IRegion region : worldChunkRegionMap.get(world).get(chunkRef)) {
             if (region.contains(location)) {
                 return region;
             }
@@ -48,7 +48,7 @@ public class CoreRegion {
         return null;
     }
 
-    public IACRegion getRegion(String name) {
+    public IRegion getRegion(String name) {
         return nameRegionMap.get(name);
     }
 

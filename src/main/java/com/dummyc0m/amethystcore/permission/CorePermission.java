@@ -15,9 +15,11 @@ import java.util.UUID;
  */
 public class CorePermission {
     private final Map<UUID, PermissionAttachment> attachmentMap;
+    private final PermissionGroups permissionGroups;
     private Field pField;
 
-    public CorePermission() {
+    public CorePermission(PermissionGroups permissionGroups) {
+        this.permissionGroups = permissionGroups;
         this.attachmentMap = new HashMap<>();
     }
 
@@ -31,6 +33,12 @@ public class CorePermission {
     protected void calculatePerms(Player player, Map<String, Boolean> permissions) {
         Map<String, Boolean> directMap = this.reflectMap(this.attachmentMap.get(player.getUniqueId()));
         directMap.putAll(permissions);
+        player.recalculatePermissions();
+    }
+
+    protected void calculatePerms(Player player, String groupId) {
+        Map<String, Boolean> directMap = this.reflectMap(this.attachmentMap.get(player.getUniqueId()));
+        directMap.putAll(permissionGroups.getGroupPermission(groupId));
         player.recalculatePermissions();
     }
 

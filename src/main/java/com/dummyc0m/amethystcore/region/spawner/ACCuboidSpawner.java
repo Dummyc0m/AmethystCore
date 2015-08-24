@@ -1,7 +1,7 @@
 package com.dummyc0m.amethystcore.region.spawner;
 
 import com.dummyc0m.amethystcore.region.CoreRegion;
-import com.dummyc0m.amethystcore.region.cuboid.IACCuboid;
+import com.dummyc0m.amethystcore.region.cuboid.ICuboid;
 import org.bukkit.Location;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Dummyc0m on 8/16/15.
  */
 public class ACCuboidSpawner extends ACAbstractSpawner {
-    private final IACCuboid cuboid;
+    private final ICuboid cuboid;
 
-    public ACCuboidSpawner(String world, IACCuboid cuboid, String name, int maxEntityCount, ACEntityData entityData) {
+    public ACCuboidSpawner(String world, ICuboid cuboid, String name, int maxEntityCount, ACEntityData entityData) {
         super(entityData, world, name, maxEntityCount);
         this.cuboid = cuboid;
     }

@@ -16,7 +16,7 @@ public class RegionListener implements Listener {
     private final CoreRegion manager;
 
     private final Map<UUID, Long> lastProcessed;
-    private final Map<UUID, IACRegion> lastIn;
+    private final Map<UUID, IRegion> lastIn;
 
     public RegionListener(CoreRegion manager) {
         this.manager = manager;
@@ -41,7 +41,7 @@ public class RegionListener implements Listener {
     }
 
     private void calculateMove(Player player, Location location) {
-        IACRegion region = manager.getRegion(location);
+        IRegion region = manager.getRegion(location);
         if (region == null) {
             if (lastIn.containsKey(player.getUniqueId())) {
                 lastIn.get(player.getUniqueId()).onDeparture(player);

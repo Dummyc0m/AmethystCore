@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Dummyc0m on 8/2/15.
  */
-public interface IACSpawner {
+public interface ISpawner {
     boolean contains(Location location);
 
     List<CoreRegion.ChunkRef> getChunks();

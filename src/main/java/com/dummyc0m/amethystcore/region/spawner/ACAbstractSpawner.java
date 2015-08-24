@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.spawner;
 
-import com.dummyc0m.amethystcore.region.cuboid.IACCuboid;
+import com.dummyc0m.amethystcore.region.cuboid.ICuboid;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Dummyc0m on 8/16/15.
  */
-public abstract class ACAbstractSpawner implements IACSpawner {
+public abstract class ACAbstractSpawner implements ISpawner {
     private final World world;
     private final String name;
     private final int maxEntityCount;
@@ -44,7 +44,7 @@ public abstract class ACAbstractSpawner implements IACSpawner {
         return maxEntityCount;
     }
 
-    protected void spawnInCuboid(IACCuboid cuboid) {
+    protected void spawnInCuboid(ICuboid cuboid) {
         if (checkEntityLimit()) {
             return;
         }
