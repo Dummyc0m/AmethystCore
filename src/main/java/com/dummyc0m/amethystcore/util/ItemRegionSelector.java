@@ -13,8 +13,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 /**
  * Created by Dummyc0m on 7/14/15.
  */
-public class RegionSelectorItem extends ACAbstractItem {
-    public RegionSelectorItem() {
+public class ItemRegionSelector extends ACAbstractItem {
+    public ItemRegionSelector() {
         super(new ACItemData(Material.BLAZE_ROD, (short) 0, 1, true, false, true, true, false, true), "AmethystCore", "amethystcore:regionselector");
     }
 

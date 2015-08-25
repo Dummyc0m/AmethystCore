@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.spawner;
 
-import com.dummyc0m.amethystcore.region.CoreRegion;
+import com.dummyc0m.amethystcore.region.ChunkRef;
 import com.dummyc0m.amethystcore.region.cuboid.ICuboid;
 import com.dummyc0m.amethystcore.util.WeightedRandom;
 import org.bukkit.Location;
@@ -32,8 +32,8 @@ public class ACComplexSpawner extends ACAbstractSpawner {
     }
 
     @Override
-    public List<CoreRegion.ChunkRef> getChunks() {
-        List<CoreRegion.ChunkRef> chunkRefs = new ArrayList<>();
+    public List<ChunkRef> getChunks() {
+        List<ChunkRef> chunkRefs = new ArrayList<>();
         for (ICuboid cuboid : cuboids) {
             chunkRefs.addAll(cuboid.getChunks());
         }

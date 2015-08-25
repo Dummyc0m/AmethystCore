@@ -1,6 +1,6 @@
 package com.dummyc0m.amethystcore.region.cuboid;
 
-import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
+import com.dummyc0m.amethystcore.region.ChunkRef;
 import com.dummyc0m.amethystcore.util.MathUtil;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

@@ -1,6 +1,5 @@
 package com.dummyc0m.amethystcore.region;
 
-import com.dummyc0m.amethystcore.region.CoreRegion.ChunkRef;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

@@ -10,6 +10,7 @@ import com.dummyc0m.amethystcore.permission.CorePermission;
 import com.dummyc0m.amethystcore.permission.PermissionGroups;
 import com.dummyc0m.amethystcore.region.CoreRegion;
 import com.dummyc0m.amethystcore.region.RegionListener;
+import com.dummyc0m.amethystcore.region.spawner.CoreSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.HandlerList;
@@ -33,6 +34,8 @@ public class AmethystCore extends JavaPlugin {
 
     private CoreRegion regionManager;
 
+    private CoreSpawner spawnerManager;
+
     private CoreNPC npcManager;
     private ACConfig coreNPCConfig;
 
@@ -52,6 +55,10 @@ public class AmethystCore extends JavaPlugin {
 
     public CoreRegion getRegionManager() {
         return regionManager;
+    }
+
+    public CoreSpawner getSpawnerManager() {
+        return spawnerManager;
     }
 
     public PermissionGroups getPermissionGroups() {
@@ -80,6 +87,7 @@ public class AmethystCore extends JavaPlugin {
         itemManager = new CoreItem();
         permissionManager = new CorePermission(permissionGroups);
         regionManager = new CoreRegion();
+        spawnerManager = new CoreSpawner();
 
         logger.info("Registering Listeners");
         this.getServer().getPluginManager().registerEvents(new ItemListener(itemManager), this);
